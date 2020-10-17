@@ -14,6 +14,7 @@ import manage from './modules/manage_管理员管理'
 import  cate from './modules/cate_商品分类'
 import member from './modules/member_会员管理'
 import goods from './modules/goods_商品管理'
+import specs from './modules/specs_商品规格管理'
 
 export default new Vuex.Store({
   state,
@@ -30,5 +31,6 @@ export default new Vuex.Store({
     cate,
     member,
     goods,
+    specs,
   }
 })

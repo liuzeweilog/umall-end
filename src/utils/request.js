@@ -415,3 +415,79 @@ export const reqGoodsUpdate=(params)=>{
     data: data,
   })
 }
+
+
+
+
+/**************商品规格管理****************/
+//添加
+export const reqSpecsAdd = (params) => {
+  return axios({
+    url: baseUrl + '/api/specsadd', //后端数据的路径
+    method: 'post', //向后端请求数据的方式
+    data: qs.stringify(params) //接受的是对象,params相当于形参
+  })
+}
+
+//商品规格总数(用于计算分页)
+export const reqSpecsCount = () => {
+  return axios({
+    url: baseUrl + '/api/specscount',
+    method: "get",
+  })
+}
+
+// 商品规格列表（分页）params={page:1,size:10}
+export const reqSpecsList = (params) => {
+  return axios({
+    url: baseUrl + '/api/specslist', //后端数据的路径
+    method: 'get', //向后端请求数据的方式
+    params: params,
+  })
+}
+
+
+
+//删除列表数据
+export const reqSpecsDel = (id) => {
+  return axios({
+    url: baseUrl + '/api/specsdelete', //后端数据的路径
+    method: 'post', //向后端请求数据的方式
+    // data:{
+    //   id:id,//要删除列表的id,id就是列表的唯一的值
+    // }
+    data: qs.stringify({
+      id: id
+    }),
+  })
+}
+
+//读取一条列表数据(编辑)
+export const reqSpecsinfo = (id) => {
+  return axios({
+    url: baseUrl + '/api/specsinfo', //后端数据的路径
+    method: 'get', //向后端请求数据的方式
+    params: {
+      id: id, //通过id获取对应编号的数据
+    }
+  })
+}
+
+//菜单修改请求
+export const reqSpecsUpdate = (params) => {
+  return axios({
+    url: baseUrl + '/api/specsedit', //后端数据的路径
+    method: 'post', //向后端请求数据的方式
+    data: qs.stringify(
+      // id: id,//这些是要修改的数据
+      // pid,
+      // title,
+      // icon,
+      // type,
+      // url,
+      // status,
+      params //直接把form当作一个对象传过来了
+    ),
+  })
+}
+

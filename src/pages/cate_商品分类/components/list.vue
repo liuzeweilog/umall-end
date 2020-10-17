@@ -10,7 +10,7 @@
         border
         :tree-props="{ children: 'children', hasChildren: 'hasChildren' }"
       >
-        <el-table-column prop="pid" label="分类编号" sortable width="180">
+        <el-table-column prop="id" label="分类编号" sortable width="180">
         </el-table-column>
         <el-table-column prop="catename" label="分类名称" width="180">
         </el-table-column>
