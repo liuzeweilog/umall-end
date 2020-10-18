@@ -1,12 +1,9 @@
 <template>
   <div>
     <el-button type="primary" @click="btn">添加</el-button>
-    <el-button type="danger">危险按钮</el-button>
 
-
-
-    <v-list></v-list>
-    <v-add :info='info'></v-add>
+    <v-list @change="edit"></v-list>
+    <v-add :info='info' ref="child"></v-add>
   </div>
 </template>
 <script>
@@ -22,7 +19,8 @@ export default {
   data() {
     return {
      info:{
-       isshow:false
+       isshow:false,
+       isBtn:1,
      }
     };
   },
@@ -33,6 +31,13 @@ export default {
     ...mapActions({}),
     btn(){
       this.info.isshow=true
+      this.info.isBtn=1
+    },
+    edit(id){
+      // console.log(id);
+      this.info.isshow=true
+      this.info.isBtn=2
+      this.$refs.child.look(id)
     }
   },
   mounted() {},

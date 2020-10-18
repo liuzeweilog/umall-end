@@ -5,16 +5,23 @@
       </el-table-column>
       <el-table-column prop="specsname" label="规格名称" width="180">
       </el-table-column>
-      <el-table-column prop="name" label="规格属性"> </el-table-column>
+      <el-table-column prop="attrs" label="规格属性">
+        <template slot-scope="scope">
+          <el-tag v-for="(item,index) in scope.row.attrs" :key="index">{{
+            item
+          }}</el-tag>
+        </template>
+        <!-- <el-tag>小区</el-tag> -->
+      </el-table-column>
       <el-table-column prop="status" label="状态">
-        <template>
-          <el-button type="primary">启用</el-button>
-          <el-button type="info">禁用</el-button>
+        <template  slot-scope="scope">
+          <el-button type="primary" v-if="scope.row.status==1">启用</el-button>
+          <el-button type="info" v-else>禁用</el-button>
         </template>
       </el-table-column>
       <el-table-column prop="name" label="操作">
         <template slot-scope="scope">
-          <el-button type="primary">编辑</el-button>
+          <el-button type="primary" @click="edit(scope.row.id)">编辑</el-button>
           <el-button type="danger" @click="del(scope.row.id)">删除</el-button>
         </template>
       </el-table-column>
@@ -83,8 +90,15 @@ export default {
           });
         });
     },
+
+    //点击编辑按钮
+    edit(id){
+      this.$emit('change',id)
+
+    }
   },
   mounted() {
+
     this.setChangeList();
     this.setChangeTotal();
   },
